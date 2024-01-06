@@ -24,7 +24,7 @@ def get_triangular_number_iterative(nth: int) -> int:
     """
 
     validate_non_negative_integer(nth)
-    sum_ = 1
+    nbr = 1
     for _ in range(1, nth):
-        sum_ += sum_ + 1
-    return sum_
+        nbr += nbr + 1
+    return nbr
