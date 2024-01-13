@@ -16,11 +16,18 @@ def is_palindrome_recursive(seq: Sequence) -> bool:
     bool
     """
 
-    if len(seq) < 2:
-        return True
-    if seq[0] != seq[-1]:
-        return False
-    return is_palindrome_recursive(seq[1:-1])
+    def _is_pal(left_idx: int, right_idx: int) -> bool:
+        """The actual a bit optimised version."""
+
+        if (right_idx - left_idx) < 1:
+            return True
+        if seq[left_idx] != seq[right_idx]:
+            return False
+        return _is_pal(left_idx + 1, right_idx - 1)
+
+    length = len(seq)
+    right_index = length - 1 if length else 0
+    return _is_pal(0, right_index)
 
 
 def is_palindrome_iterative(seq: Sequence) -> bool:
@@ -36,8 +43,6 @@ def is_palindrome_iterative(seq: Sequence) -> bool:
     """
 
     length: int = len(seq)
-    if length < 2:
-        return True
     for index in range(length // 2):
         if seq[index] != seq[-(index + 1)]:
             return False

@@ -28,7 +28,8 @@ def test_factorial(number, answer, expectation):
     with expectation:
         res_rec = factorial_recursive(number)
         res_iter = factorial_iterative(number)
-        assert res_rec == res_iter == answer
+        assert res_rec == answer
+        assert res_iter == answer
 
 
 @pytest.mark.parametrize(
@@ -49,7 +50,8 @@ def test_fibonacci(number, answer, expectation):
     with expectation:
         res_iter = fibonacci_iterative(number)
         res_rec = fibonacci_recursive(number)
-        assert res_iter == res_rec == answer
+        assert res_iter == answer
+        assert res_rec == answer
 
 
 @pytest.mark.parametrize(
@@ -69,4 +71,5 @@ def test_get_nth_triangular_number(number, answer, expectation):
     with expectation:
         res_rec = get_triangular_number_recursive(number)
         res_iter = get_triangular_number_iterative(number)
-        assert res_iter == answer == res_rec
+        assert res_iter == answer
+        assert res_rec == answer
