@@ -1,8 +1,8 @@
-from mathematics.common import validate_non_negative_integer
+from mathematics.common import validate_positive_integer
 
 
 def _get_nth_triangular_number_recursive(nth: int) -> int:
-    if not nth:
+    if nth == 1:
         return 1
     return _get_nth_triangular_number_recursive(nth - 1) + nth
 
@@ -10,21 +10,21 @@ def _get_nth_triangular_number_recursive(nth: int) -> int:
 def get_triangular_number_recursive(nth: int) -> int:
     """Returns the nth triangular number.
 
-    The indexation starts from zero, so T(0) = 1, T(1) = 3 and so forth.
+    The indexation starts from zero, so T(1) = 1, T(2) = 3 and so forth.
     """
 
-    validate_non_negative_integer(nth)
+    validate_positive_integer(nth)
     return _get_nth_triangular_number_recursive(nth)
 
 
 def get_triangular_number_iterative(nth: int) -> int:
     """Returns the nth triangular number.
 
-    The indexation starts from zero, so T(0) = 1, T(1) = 3 and so forth.
+    The indexation starts from zero, so T(1) = 1, T(2) = 3 and so forth.
     """
 
-    validate_non_negative_integer(nth)
-    nbr = 1
-    for _ in range(1, nth):
-        nbr += nbr + 1
+    validate_positive_integer(nth)
+    nbr = nth
+    for n in range(1, nth):
+        nbr += n
     return nbr

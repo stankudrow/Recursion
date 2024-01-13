@@ -28,7 +28,7 @@ def test_factorial(number, answer, expectation):
     with expectation:
         res_rec = factorial_recursive(number)
         res_iter = factorial_iterative(number)
-        res_rec == res_iter == answer
+        assert res_rec == res_iter == answer
 
 
 @pytest.mark.parametrize(
@@ -57,14 +57,16 @@ def test_fibonacci(number, answer, expectation):
     [
         (-21, None, pytest.raises(ValueError)),
         (4.2, None, pytest.raises(TypeError)),
-        (0, 1, does_not_raise()),
-        (1, 3, does_not_raise()),
-        (2, 6, does_not_raise()),
-        (3, 10, does_not_raise()),
+        (0, 1, pytest.raises(ValueError)),
+        (1, 1, does_not_raise()),
+        (2, 3, does_not_raise()),
+        (3, 6, does_not_raise()),
+        (4, 10, does_not_raise()),
+        (5, 15, does_not_raise()),
     ],
 )
 def test_get_nth_triangular_number(number, answer, expectation):
     with expectation:
         res_rec = get_triangular_number_recursive(number)
         res_iter = get_triangular_number_iterative(number)
-        res_rec == res_iter == answer
+        assert res_iter == answer == res_rec
