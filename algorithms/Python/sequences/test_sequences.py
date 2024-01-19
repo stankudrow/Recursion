@@ -91,5 +91,4 @@ def test_linear_search(sequence, element, answer):
 def test_binary_search(sequence, element, answer):
     res_iter = binsearch_iterative(sequence, element)
     res_rec = binsearch_recursive(sequence, element)
-    print(res_iter, res_rec)
     assert res_iter == answer == res_rec
