@@ -2,6 +2,8 @@ from mathematics.common import validate_positive_integer
 
 
 def _get_nth_triangular_number_recursive(nth: int) -> int:
+    """The actual recursive implementation."""
+
     if nth == 1:
         return 1
     return _get_nth_triangular_number_recursive(nth - 1) + nth

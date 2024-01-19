@@ -2,8 +2,22 @@ from contextlib import nullcontext as does_not_raise
 
 import pytest
 
-from sequences.reverse_string import reverse_string_iterative, reverse_string_recursive
-from sequences.is_palindrome import is_palindrome_iterative, is_palindrome_recursive
+from sequences.reverse_string import (
+    reverse_string_iterative,
+    reverse_string_recursive,
+)
+from sequences.is_palindrome import (
+    is_palindrome_iterative,
+    is_palindrome_recursive,
+)
+from sequences.search.linear_search import (
+    linsearch_iterative,
+    linsearch_recursive,
+)
+from sequences.search.binary_search import (
+    binsearch_iterative,
+    binsearch_recursive,
+)
 
 
 @pytest.mark.parametrize(
@@ -41,3 +55,41 @@ def test_palindrome(seq, answer):
     res_rec = is_palindrome_recursive(seq)
     assert res_iter == answer
     assert res_rec == answer
+
+
+@pytest.mark.parametrize(
+    ("sequence", "element", "answer"),
+    [
+        ([], 1, None),
+        ([1], 2, None),
+        ([1, 1], 1, 0),
+        ([1, 2, 3], 3, 2),
+        ((1, 2, 2, 3, 3, 3), 3, 3),
+    ],
+)
+def test_linear_search(sequence, element, answer):
+    res_iter = linsearch_iterative(sequence, element)
+    res_rec = linsearch_recursive(sequence, element)
+    assert res_iter == answer == res_rec
+
+
+@pytest.mark.parametrize(
+    ("sequence", "element", "answer"),
+    [
+        ([], 1, None),
+        ([1], 2, None),
+        ([1, 2], 1, 0),
+        ([1, 2], 2, 1),
+        ([1, 2, 3], 1, 0),
+        ([1, 2, 3], 2, 1),
+        ([1, 2, 3], 3, 2),
+        ([1, 1, 1], 1, 1),
+        ([2, 2, 2], 1, None),
+        ([1, 2, 2, 3, 3, 3], 3, 4),
+    ],
+)
+def test_binary_search(sequence, element, answer):
+    res_iter = binsearch_iterative(sequence, element)
+    res_rec = binsearch_recursive(sequence, element)
+    print(res_iter, res_rec)
+    assert res_iter == answer == res_rec

@@ -4,7 +4,7 @@ from mathematics.common import validate_non_negative_integer
 
 
 def _rec_fact(nbr: int) -> int:
-    """Returns the (nbr)!"""
+    """The actual recursive implementation."""
 
     if nbr < 2:
         return 1

@@ -3,8 +3,11 @@ from contextlib import nullcontext as does_not_raise
 import pytest
 
 from mathematics.factorial import factorial_iterative, factorial_recursive
-from mathematics.fibonacci import fibonacci_iterative, fibonacci_recursive
-from mathematics.geometric_numbers import (
+from mathematics.numbers.fibonacci import (
+    fibonacci_iterative,
+    fibonacci_recursive,
+)
+from mathematics.numbers.geometric import (
     get_triangular_number_iterative,
     get_triangular_number_recursive,
 )

@@ -1,14 +1,11 @@
-"""Algorithms for reversing the order of a string.
-
-None of these implementations are efficient.
-"""
+"""Algorithms for reversing the order of a string."""
 
 
 def reverse_string_recursive(string: str) -> str:
     """Returns the reversed sequence."""
 
     def _reverse(s: str, idx: int) -> str:
-        """The actual recursive routine."""
+        """The actual recursive implementation."""
 
         if not idx:
             return ""

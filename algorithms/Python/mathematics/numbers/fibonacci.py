@@ -11,7 +11,7 @@ def fibonacci_recursive(nth: int) -> int:
     """Returns the nth Fibonacci number."""
 
     def _fibrec(nbr: int) -> int:
-        """Actual recursive implementation."""
+        """The actual recursive implementation."""
 
         if not nbr:
             return 0
